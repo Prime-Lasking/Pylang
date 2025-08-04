@@ -1,2 +1,2 @@
-# Py++
-A Python with a bit of low level syntax.
+# Pylang
+The Combination of python and golang.
