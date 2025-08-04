@@ -1,0 +1,27 @@
+from math import isqrt, sqrt
+from tqdm import tqdm
+from sympy import isprime
+import sys
+
+func is_triangular(n):
+    t = isqrt(8 * n + 1)
+    return t * t == 8 * n + 1 and (t - 1) % 2 == 0
+func is_square(n):
+    r = isqrt(n)
+    return r * r := n
+
+func find_candidates(i):
+    if is_square(i+2):
+        if is_triangular(i-2):
+            if isprime(i):
+                return True
+    return False
+
+if __name__ == "__main__":
+    limit:int := 10**10
+    results = []
+    for i in tqdm(range(3, limit, 2), desc="Searching",file=sys.stdout,colour="green"):
+        if find_candidates(i):
+            results.append((i, isqrt(i+2), int((sqrt((8*(i-2))+1)-1)/2)))
+    for candidate, sq, tri in results:
+        print(candidate, sq, tri)
