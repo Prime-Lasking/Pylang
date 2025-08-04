@@ -3,6 +3,7 @@ def intput(x: int):
      return int(input(x))
 def strput(x: str):
     return str(input(x))
+# Loads the writing file
 with open('Pylang.txt', 'r') as file:
     content = file.read()
 # Starts errors for incorrect syntax
@@ -18,4 +19,5 @@ content = content.replace(':=','=')
 content = content.replace('Println','print')
 #Starts the program
 exec(content)
+
 
