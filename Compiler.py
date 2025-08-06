@@ -2,10 +2,10 @@ import re
 import sys
 
 # Custom input functions for Pylang
-def input_int(prompt: str) -> int:
+def intput(prompt: str) -> int:
     return int(input(prompt))
 
-def input_str(prompt: str) -> str:
+def strput(prompt: str) -> str:
     return input(prompt)
 
 # Function to run Pylang code from a .pyl file
@@ -38,3 +38,4 @@ else:
     else:
         print("Error: The file must have a .pyl extension.")
         
+
