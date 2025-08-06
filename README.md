@@ -1,3 +1,3 @@
 # Pylang
 The Combination of python and golang.
-## pylangdoc.wordpress.com
+## https://pylangdoc.wordpress.com
