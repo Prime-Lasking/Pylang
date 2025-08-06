@@ -26,7 +26,10 @@ def run_pylang_file(filename: str):
     content = re.sub(r'\bfunc\b', 'def', content)
     content = re.sub(r'\bPrintln\b', 'print', content)
 
-    exec(content)
+    try:
+        exec(content)
+    except Exception as e:
+        print(f"Pylang cannot be run. Error: {type(e).__name__} - {e}")
 
 # Check if a filename is provided as a command-line argument
 if len(sys.argv) != 2:
@@ -38,4 +41,5 @@ else:
     else:
         print("Error: The file must have a .pyl extension.")
         
+
 
