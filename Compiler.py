@@ -2,13 +2,15 @@ import re
 import sys
 
 # Custom input functions for Pylang
-def intput(prompt: str) -> int:
+def input_int(prompt: str) -> int:
     return int(input(prompt))
 
-def strput(prompt: str) -> str:
+def input_str(prompt: str) -> str:
     return input(prompt)
 
 # Function to run Pylang code from a .pyl file
+import re
+
 def run_pylang_file(filename: str):
     with open(filename, 'r') as file:
         content = file.read()
@@ -23,15 +25,19 @@ def run_pylang_file(filename: str):
         if re.search(rf'\b{re.escape(keyword)}\b', content):
             raise SyntaxError(f"Forbidden keyword: '{keyword}' → {message}")
 
-    content = re.sub(r'\bfunc\b', 'def', content)
-    content = re.sub(r'\bPrintln\b', 'print', content)
+    conversion_keywords = {
+        "func": "def",
+        "Println": "print"
+    }
+    for old_keyword, new_keyword in conversion_keywords.items():
+        content = re.sub(r'\b' + old_keyword + r'\b', new_keyword, content)
 
     try:
         exec(content)
     except Exception as e:
         print(f"Pylang cannot be run. Error: {type(e).__name__} - {e}")
+        
 
-# Check if a filename is provided as a command-line argument
 if len(sys.argv) != 2:
     print("Usage: python script.py <filename.pyl>")
 else:
@@ -40,6 +46,3 @@ else:
         run_pylang_file(filename)
     else:
         print("Error: The file must have a .pyl extension.")
-        
-
-
