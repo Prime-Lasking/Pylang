@@ -3,6 +3,7 @@ Introduction
 
 pylang is a superset of python which adds many syntax capabilities from golang
 Example:
+
 func sum(a,b):
     return a+b
 Println(sum(1,2))
