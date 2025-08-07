@@ -1,16 +1,15 @@
 import re
 import sys
+import traceback
 
 # Custom input functions for Pylang
-def input_int(prompt: str) -> int:
+def intput(prompt: str) -> int:
     return int(input(prompt))
 
-def input_str(prompt: str) -> str:
+def strput(prompt: str) -> str:
     return input(prompt)
 
 # Function to run Pylang code from a .pyl file
-import re
-
 def run_pylang_file(filename: str):
     with open(filename, 'r') as file:
         content = file.read()
@@ -33,10 +32,12 @@ def run_pylang_file(filename: str):
         content = re.sub(r'\b' + old_keyword + r'\b', new_keyword, content)
 
     try:
-        exec(content)
-    except Exception as e:
-        print(f"Pylang cannot be run. Error: {type(e).__name__} - {e}")
-        
+        exec(content, {'input_int': input_int, 'input_str': input_str})
+    except Exception:
+        print("Pylang cannot be run due to an error:")
+        traceback_lines = traceback.format_exc().splitlines()
+        for line in traceback_lines:
+            print(line)
 
 if len(sys.argv) != 2:
     print("Usage: python script.py <filename.pyl>")
