@@ -18,18 +18,6 @@ standard Python under the hood.
 
 ------------------------------------------------------------------------
 
-## 📦 Installation
-
-Clone the repository and run the interpreter:
-
-``` bash
-git clone https://github.com/yourusername/pylang.git
-cd pylang
-python pylang.py examples/hello.pyl
-```
-
-------------------------------------------------------------------------
-
 ## 🧾 Syntax Overview
 
 ### Comments
@@ -133,4 +121,5 @@ python pylang.py example.pyl
 
 ## 📜 License
 
-MIT License © 2025 Your Name
+MIT License © 2025 Prime-Lasking
+
